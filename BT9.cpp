@@ -5,8 +5,6 @@ int main()
 	int row,i;
 	i=1;
 	printf("Input number of row: "); scanf("%d", &row);
-	int z;
-	z=row-2;
 	while (i<=row)
 	{
 			// row
@@ -33,3 +31,4 @@ int main()
 	}
 	return 0;
 }
+
