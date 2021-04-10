@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <conio.h>
+#include <stdlib.h>
 //task 1
-int checkPos(int a) {
+void checkPos(int &a) {
+    printf("Enter a positive number: "); scanf("%d", &a);
     while (a<=0) {
         printf("Re-enter number: "); 
         scanf("%d", &a);
     }
-    return a;
+  //  return a;
 }
 //task 2
 void prime(int a) {
@@ -48,7 +50,7 @@ float sumPlus(int a) {
    return sumP;
 }
 //task 5
-float factorialSum(int a) {
+double factorialSum(int a) {
     int sum=0, fac=1;
     double facSum=0.0;
     for (int i = 1; i <= a; i++){
@@ -63,14 +65,43 @@ float factorialSum(int a) {
     return facSum;
 }
 int main(){
-    int n,realNum;
-    printf("<Function 1> \nEnter a number: "); scanf("%d", &n);
-    realNum = checkPos(n);
-    printf("\n<Function 2> \nPrime number less or equal %d: ", realNum);
-    prime(realNum);
-    printf("\n\n<Function 3> \nFirst %d numbers in fibonaci series: ", realNum);
-    fibonaci(realNum);
-    printf("\n\n<Function 4> \nSum of: 1 + 2/(1+2) + .. + N/(1+2+3+...+N) = %.2lf", sumPlus(realNum));
-    printf("\n\n<Function 5> \nSum of: 1 + 2!/(1+2) + .. + N!/(1+2+3+...+N) = %.2lf", factorialSum(realNum));
-    getch(); 
+    int n=0, function;
+    do {
+    system("CLS");
+    printf("----------------Menu--------------\n");
+    printf("1. Check positive number\n");
+    printf("2. Prime number less or equal %d: \n", n);
+    printf("3. First %d numbers in fibonaci series: \n", n);
+    printf("4. Sum of: 1 + 2/(1+2) + .. + N/(1+2+3+...+N) = \n");
+    printf("5. Sum of: 1 + 2!/(1+2) + .. + N!/(1+2+3+...+N) = \n");
+    printf("6. Quit\n");
+    printf("----------------------------------\n");
+    printf("Choose a function: ");
+    scanf("%d", &function);
+    switch(function) {
+        case 1:
+            checkPos(n);
+            getch();
+            break;
+        case 2:
+            printf("\n<Function 2> \nPrime number less or equal %d: ", n);
+            prime(n);
+            getch();
+            break;
+        case 3: 
+            printf("\n\n<Function 3> \nFirst %d numbers in fibonaci series: ", n);
+            fibonaci(n);
+            getch();
+            break;
+        case 4:
+            printf("\n\n<Function 4> \nSum of: 1 + 2/(1+2) + .. + N/(1+2+3+...+N) = %.2lf", sumPlus(n));
+            getch();
+            break;
+        case 5:
+            printf("\n\n<Function 5> \nSum of: 1 + 2!/(1+2) + .. + N!/(1+2+3+...+N) = %.2lf", factorialSum(n));
+            getch();
+            break;
+        case 6: break;
+    }
+    } while (function!=6);
 }
